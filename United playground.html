@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>United Playground | Games for Everyone</title>
+<style>
+:root{--bg:#090b10;--panel:#121620;--line:#252b38;--lime:#c8ff35;--muted:#9ba3b5;--white:#f5f7fb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font-family:Inter,Arial,sans-serif}
+a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
+header{display:flex;align-items:center;justify-content:space-between;padding:20px 6%;border-bottom:1px solid var(--line);position:sticky;top:0;background:#090b10ed;backdrop-filter:blur(12px);z-index:5}
+.logo{font-weight:900;letter-spacing:-1px;font-size:22px}.logo span{color:var(--lime)}
+nav{display:flex;gap:28px;color:#c4cad6;font-size:14px}nav a:hover{color:var(--lime)}
+.cart{border:1px solid #414958;background:var(--panel);color:white;padding:10px 15px;border-radius:9px}.cart b{color:var(--lime)}
+.hero{padding:75px 6% 60px;display:grid;grid-template-columns:1.1fr .9fr;gap:35px;align-items:center;min-height:440px;background:radial-gradient(ellipse at 78% 40%,#2b2558 0%,transparent 48%),radial-gradient(ellipse at 80% 80%,#1b3217 0%,transparent 38%)}
+.eyebrow{color:var(--lime);font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase}
+h1{font-size:clamp(42px,6vw,78px);line-height:.98;letter-spacing:-4px;margin:18px 0}h1 em{font-style:normal;color:var(--lime)}
+.hero p{color:#b0b8c7;max-width:480px;line-height:1.7;font-size:16px}
+.primary{display:inline-block;background:var(--lime);color:#10130a;border:0;border-radius:9px;padding:14px 21px;font-weight:800;margin-top:15px}
+.hero-art{min-height:290px;border:1px solid #45415f;border-radius:22px;position:relative;overflow:hidden;background:linear-gradient(135deg,#171a2a,#171127 55%,#172619);display:flex;align-items:center;justify-content:center}
+.orbit{position:absolute;width:290px;height:290px;border:1px solid #b5ff3550;border-radius:50%;transform:rotate(-28deg) scaleX(1.35)}
+.orbit:after{content:"";position:absolute;width:13px;height:13px;border-radius:50%;background:var(--lime);box-shadow:0 0 30px var(--lime);top:20px;left:38px}
+.controller{font-size:112px;filter:drop-shadow(0 15px 30px #000);z-index:1;transform:rotate(-12deg)}
+.art-label{position:absolute;bottom:20px;left:22px;font-size:11px;letter-spacing:2px;color:#c5c9d7}
+.wrap{padding:48px 6%}.section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:24px}.section-head h2{font-size:28px;letter-spacing:-1px;margin:8px 0 0}.section-head p{color:var(--muted);font-size:14px}
+.categories{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}.chip{padding:10px 16px;border:1px solid var(--line);border-radius:30px;background:#11151d;color:#c4cad6}.chip.active,.chip:hover{background:var(--lime);color:#10130a;border-color:var(--lime);font-weight:700}
+.search{width:100%;max-width:320px;background:#11151d;border:1px solid var(--line);border-radius:9px;padding:12px 14px;color:white;outline:none}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;overflow:hidden;transition:.2s}.card:hover{transform:translateY(-4px);border-color:#68734a}
+.cover{height:180px;display:flex;align-items:center;justify-content:center;font-size:52px;position:relative;overflow:hidden}
+.cover:before{content:"";position:absolute;width:180px;height:180px;border:1px solid #ffffff25;border-radius:50%;transform:scaleX(1.4)}
+.cover span{z-index:1;filter:drop-shadow(0 8px 10px #0008)}
+.c1{background:linear-gradient(140deg,#512d7b,#161b38 65%,#10131b)}.c2{background:linear-gradient(140deg,#b4482b,#382027 70%,#10131b)}.c3{background:linear-gradient(140deg,#246b66,#162b43 70%,#10131b)}.c4{background:linear-gradient(140deg,#a58b32,#44351e 70%,#10131b)}.c5{background:linear-gradient(140deg,#365e9e,#17213e 70%,#10131b)}.c6{background:linear-gradient(140deg,#7a3157,#2a173d 70%,#10131b)}.c7{background:linear-gradient(140deg,#47732f,#1b3326 70%,#10131b)}.c8{background:linear-gradient(140deg,#4a4b58,#1a1c27 70%,#10131b)}
+.tag{position:absolute;top:12px;left:12px;background:#0a0c11c9;border:1px solid #ffffff25;padding:5px 8px;border-radius:5px;font-size:10px;text-transform:uppercase;letter-spacing:1px}
+.info{padding:15px}.platform{font-size:10px;color:var(--lime);letter-spacing:1.4px;text-transform:uppercase}.info h3{font-size:16px;margin:8px 0}.desc{font-size:12px;color:var(--muted);min-height:30px}.buyrow{display:flex;align-items:center;justify-content:space-between;margin-top:16px}.price{font-weight:800;font-size:17px}.add{background:transparent;border:1px solid #586174;color:white;border-radius:7px;padding:8px 11px}.add:hover{background:var(--lime);color:#10130a;border-color:var(--lime)}
+.promo{margin:0 6% 55px;border:1px solid #343b26;background:linear-gradient(100deg,#1b2412,#111620);border-radius:16px;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;gap:20px}.promo h2{margin:7px 0}.promo p{color:var(--muted);margin:0}
+footer{border-top:1px solid var(--line);padding:28px 6%;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:12px}
+.drawer{position:fixed;inset:0;background:#0009;z-index:10;display:none;justify-content:flex-end}.drawer.open{display:flex}.cartpanel{background:#10141d;width:min(420px,100%);height:100%;padding:24px;overflow:auto;border-left:1px solid var(--line)}.carttop{display:flex;justify-content:space-between;align-items:center}.close{background:none;border:0;color:white;font-size:25px}.cartitem{padding:14px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px}.checkout{width:100%;padding:14px;background:var(--lime);border:0;border-radius:8px;font-weight:800;margin-top:18px}.note{font-size:12px;color:var(--muted);line-height:1.6}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero{grid-template-columns:1fr}.hero-art{min-height:230px}nav{display:none}}
+@media(max-width:520px){.grid{grid-template-columns:1fr 1fr;gap:10px}.cover{height:130px;font-size:40px}.info{padding:11px}.info h3{font-size:14px}.desc{display:none}.wrap{padding:35px 4%}.hero{padding:55px 5%}.promo{margin:0 4% 35px;display:block}.section-head{align-items:start;gap:12px;flex-direction:column}header{padding:16px 4%}h1{letter-spacing:-2px}}
+</style>
+</head>
+<body>
+<header>
+  <a class="logo" href="#">UNITED <span>PLAYGROUND</span></a>
+  <nav><a href="#shop">Shop</a><a href="#shop" data-filter="PlayStation">PlayStation</a><a href="#shop" data-filter="Xbox">Xbox</a><a href="#shop" data-filter="Nintendo">Nintendo</a><a href="#about">About</a></nav>
+  <button class="cart" id="openCart">🛒 Cart <b id="count">0</b></button>
+</header>
+<section class="hero">
+ <div><div class="eyebrow">Your next game starts here</div><h1>PLAY MORE.<br><em>LIVE LOUD.</em></h1>
+ <p>Discover your next favourite. From legendary adventures to competitive multiplayer, find games for every kind of player.</p>
+ <a class="primary" href="#shop">Explore the shop&nbsp; →</a></div>
+ <div class="hero-art"><div class="orbit"></div><div class="controller">🎮</div><div class="art-label">UNITED BY PLAY / EST. 2026</div></div>
+</section>
+<main class="wrap" id="shop">
+ <div class="section-head"><div><div class="eyebrow">The collection</div><h2>Find your next favourite</h2><p>Fresh picks for every player.</p></div><input class="search" id="search" placeholder="Search games..."></div>
+ <div class="categories" id="filters"><button class="chip active" data-filter="All">All games</button><button class="chip" data-filter="PlayStation">PlayStation</button><button class="chip" data-filter="Xbox">Xbox</button><button class="chip" data-filter="Nintendo">Nintendo</button><button class="chip" data-filter="PC">PC</button></div>
+ <div class="grid" id="products"></div>
+</main>
+<section class="promo"><div><div class="eyebrow">The playground perks</div><h2>Good games. Great prices.</h2><p>Keep an eye out for new drops, deals and community favourites.</p></div><a class="primary" href="#shop">Shop games →</a></section>
+<footer id="about"><div><b style="color:white">UNITED PLAYGROUND</b><br>Games bring us together.</div><div>© 2026 United Playground · Demo storefront</div><div>Support: hello@unitedplayground.example</div></footer>
+<div class="drawer" id="drawer"><div class="cartpanel"><div class="carttop"><h2>Your cart</h2><button class="close" id="closeCart">×</button></div><div id="cartItems"></div><div class="carttop" style="margin-top:20px"><b>Total</b><b id="total">£0.00</b></div><button class="checkout" id="checkout">Continue to checkout</button><p class="note">Demo checkout: this storefront is a front-end preview. Connect a payment provider and configure real products before accepting orders.</p></div></div>
+<script>
+const games=[
+ {id:1,title:"Shadow Protocol",platform:"PlayStation",price:49.99,emoji:"🥷",cls:"c1",tag:"New drop",desc:"Stealth action · Adventure"},
+ {id:2,title:"Street Legends 25",platform:"Xbox",price:39.99,emoji:"🏎️",cls:"c2",tag:"Popular",desc:"Racing · Sports"},
+ {id:3,title:"Mythic Realms",platform:"PC",price:34.99,emoji:"🐉",cls:"c3",tag:"Fan favourite",desc:"Fantasy · RPG"},
+ {id:4,title:"Golden Goal",platform:"PlayStation",price:59.99,emoji:"⚽",cls:"c4",tag:"Top pick",desc:"Football · Sports"},
+ {id:5,title:"Starbound Tactics",platform:"PC",price:29.99,emoji:"🚀",cls:"c5",tag:"Indie gem",desc:"Strategy · Sci-fi"},
+ {id:6,title:"Neon Drift",platform:"Xbox",price:24.99,emoji:"🌆",cls:"c6",tag:"Hot deal",desc:"Arcade · Racing"},
+ {id:7,title:"Pocket Quest",platform:"Nintendo",price:44.99,emoji:"🍄",cls:"c7",tag:"Family pick",desc:"Adventure · Family"},
+ {id:8,title:"Afterdark: Zero",platform:"PlayStation",price:54.99,emoji:"👾",cls:"c8",tag:"Just in",desc:"Horror · Survival"}
+];
+let filter="All", cart=[];
+const products=document.getElementById("products");
+function render(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const list=games.filter(g=>(filter==="All"||g.platform===filter)&&(g.title+" "+g.platform+" "+g.desc).toLowerCase().includes(q));
+ products.innerHTML=list.map(g=>`<article class="card"><div class="cover ${g.cls}"><span>${g.emoji}</span><label class="tag">${g.tag}</label></div><div class="info"><div class="platform">${g.platform}</div><h3>${g.title}</h3><div class="desc">${g.desc}</div><div class="buyrow"><span class="price">£${g.price.toFixed(2)}</span><button class="add" onclick="addToCart(${g.id})">＋ Add</button></div></div></article>`).join("")||"<p>No games found. Try another search.</p>";
+}
+function addToCart(id){const g=games.find(x=>x.id===id);const item=cart.find(x=>x.id===id);if(item)item.qty++;else cart.push({...g,qty:1});updateCart();}
+function updateCart(){document.getElementById("count").textContent=cart.reduce((s,x)=>s+x.qty,0);document.getElementById("cartItems").innerHTML=cart.length?cart.map(x=>`<div class="cartitem"><div><b>${x.title}</b><div class="note">${x.platform} · Qty ${x.qty}</div></div><div>£${(x.price*x.qty).toFixed(2)} <button onclick="removeItem(${x.id})" style="background:none;color:#aab2c2;border:0">×</button></div></div>`).join(""):"<p class='note'>Your cart is empty. Add a game to get started.</p>";document.getElementById("total").textContent="£"+cart.reduce((s,x)=>s+x.price*x.qty,0).toFixed(2);}
+function removeItem(id){cart=cart.filter(x=>x.id!==id);updateCart();}
+document.querySelectorAll("[data-filter]").forEach(b=>b.addEventListener("click",e=>{filter=e.currentTarget.dataset.filter;document.querySelectorAll(".chip").forEach(c=>c.classList.toggle("active",c.dataset.filter===filter));render();}));
+document.getElementById("search").addEventListener("input",render);
+document.getElementById("openCart").onclick=()=>document.getElementById("drawer").classList.add("open");
+document.getElementById("closeCart").onclick=()=>document.getElementById("drawer").classList.remove("open");
+document.getElementById("drawer").addEventListener("click",e=>{if(e.target.id==="drawer")e.currentTarget.classList.remove("open")});
+document.getElementById("checkout").onclick=()=>alert("Checkout isn't connected yet. Add a payment provider before launching your store.");
+render();updateCart();
+</script>
+</body></html>
